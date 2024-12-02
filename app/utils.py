@@ -28,3 +28,14 @@ def fetch_kanji_info(kanji: str) -> dict:
             "success": False,
             "error": f"Error al conectarse con la API: {str(e)}."
         }
+def validate_kanji_input(kanji: str) -> bool:
+    """
+    Valida que la entrada del kanji sea válida.
+
+    Args:
+        kanji (str): El kanji a validar.
+
+    Returns:
+        bool: True si es válido, False en caso contrario.
+    """
+    return bool(kanji.strip()) and len(kanji) == 1 and '\u4e00' <= kanji <= '\u9faf'
