@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-from utils import fetch_kanji_info, validate_kanji_input, format_kanji_data
+from .utils import fetch_kanji_info, validate_kanji_input, format_kanji_data
 
 bp = Blueprint('routes', __name__)
 
