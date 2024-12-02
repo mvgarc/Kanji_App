@@ -12,7 +12,7 @@ def index():
 
         if kanji:
             url= f"https://kanjiapi.dev/v1/kanji/{kanji}"
-            response = request.get(url)
+            response = requests.get(url)
 
             if response.status_code ==200:
                 kanji_data = response.json
@@ -28,3 +28,5 @@ def index():
                 kanji_info = {"error": "No se pudo obtener la información del Kanji."}
         else:
             kanji_info = {"error": "Por favor, ingresa un Kanji."}
+
+    return render_template('index.html', kanji_info=kanji_info)
