@@ -1,2 +1,2 @@
-# Kanji_Api
+# Kanji_App
  
