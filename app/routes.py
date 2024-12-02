@@ -21,4 +21,8 @@ def index():
                     "kanji": kanji,
                     "meanings": kanji_data.get("meanings", ["No meaning found"]),
                     "kun_readings": kanji_data.get("kun_readings", ["No readings found"]),
+                    "on_readings": kanji_data.get("on_readings", ["No readings found"]),
                 }
+            
+            else:
+                kanji_info = {"error": "No se pudo obtener la información del Kanji."}
