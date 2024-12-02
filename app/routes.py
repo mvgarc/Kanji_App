@@ -26,3 +26,5 @@ def index():
             
             else:
                 kanji_info = {"error": "No se pudo obtener la información del Kanji."}
+        else:
+            kanji_info = {"error": "Por favor, ingresa un Kanji."}
