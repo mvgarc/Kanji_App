@@ -12,5 +12,15 @@
         <input type="text" id="kanji" name="kanji" required>
         <button type="submit">Consultar</button>
     </form>
+    {% if kanji_info %}
+        {% if kanji_info.error %}
+            <p style="color:red;">{{ kanji_info.error }}</p>
+        {% else %}
+            <h2>Kanji: {{ kanji_info.kanji }}</h2>
+            <p><strong>Meanings:</strong> {{ kanji_info.meanings | join(", ") }}</p>
+            <p><strong>Kun Readings:</strong> {{ kanji_info.kun_readings | join(", ") }}</p>
+            <p><strong>On Readings:</strong> {{ kanji_info.on_readings | join(", ") }}</p>
+        {% endif %}
+    {% endif %}
 </body>
 </html>
