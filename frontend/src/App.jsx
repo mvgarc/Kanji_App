@@ -1,50 +1,63 @@
-import { useState } from 'react';
-import './App.css';
+// App.jsx
+import React, { useState } from 'react';
+import './index.css';
 
 function App() {
   const [kanji, setKanji] = useState('');
-  const [data, setData] = useState(null);
+  const [kanjiData, setKanjiData] = useState(null);
+  const [error, setError] = useState(null);
 
-  const fetchKanji = async (e) => {
-    e.preventDefault();
-    const res = await fetch(`http://localhost:5000/api/kanji/${kanji}`);
-    const json = await res.json();
-    setData(json);
+  const fetchKanji = async () => {
+    try {
+      const response = await fetch(`https://kanjiapi.dev/v1/kanji/${kanji}`);
+      if (!response.ok) throw new Error('Kanji no encontrado');
+      const data = await response.json();
+      setKanjiData(data);
+      setError(null);
+    } catch (err) {
+      setKanjiData(null);
+      setError(err.message);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
-      <h1 className="text-4xl font-bold mb-6">Buscador de Kanji</h1>
-      <form onSubmit={fetchKanji} className="flex mb-4">
+    <div className="min-h-screen bg-gray-100 p-6">
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        Kanji Info App
+      </h1>
+
+      <div className="max-w-xl mx-auto flex flex-col items-center">
         <input
           type="text"
           value={kanji}
           onChange={(e) => setKanji(e.target.value)}
-          className="p-2 border border-gray-400 rounded-l"
-          placeholder="Enter a Kanji"
+          placeholder="Introduce un Kanji"
+          className="px-4 py-2 border border-gray-300 rounded-md w-full mb-4"
         />
-        <button className="bg-blue-500 text-white px-4 rounded-r hover:bg-blue-600">
-          Search
+        <button
+          onClick={fetchKanji}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        >
+          Buscar Kanji
         </button>
-      </form>
-      
-      {data && (
-        <div className="bg-white p-6 shadow rounded w-full max-w-4xl flex gap-8">
-          {/* Columna izquierda: Kanji */}
-          <div className="flex items-center justify-center w-1/3 border-r-2 border-gray-200">
-          <span className="text-[8rem] font-extrabold text-gray-800">{data.kanji}</span>
+      </div>
+
+      {error && (
+        <p className="text-red-500 text-center mt-4">{error}</p>
+      )}
+
+      {kanjiData && (
+        <div className="max-w-4xl mx-auto mt-10 bg-white shadow-lg rounded-xl p-6 flex flex-col md:flex-row items-center md:items-start gap-8">
+          <div className="text-8xl font-bold text-blue-600">{kanjiData.kanji}</div>
+          <div className="flex-1 space-y-3">
+            <p><strong>Significados:</strong> {kanjiData.meanings.join(', ')}</p>
+            <p><strong>Lecturas On:</strong> {kanjiData.on_readings.join(', ')}</p>
+            <p><strong>Lecturas Kun:</strong> {kanjiData.kun_readings.join(', ')}</p>
+            <p><strong>Radical principal:</strong> {kanjiData.radical?.symbol} - {kanjiData.radical?.meaning}</p>
+            <p><strong>Nivel JLPT:</strong> {kanjiData.jlpt || 'Desconocido'}</p>
           </div>
-          
-          {/* Columna derecha: Información */}
-          <div className="w-2/3 flex flex-col justify-center gap-3">
-          <p><strong className="text-blue-700">Meanings:</strong> {data.meanings.join(', ')}</p>
-          <p><strong className="text-blue-700">On'yomi:</strong> {data.on_readings.join(', ')}</p>
-          <p><strong className="text-blue-700">Kun'yomi:</strong> {data.kun_readings.join(', ')}</p>
-          <p><strong className="text-blue-700">JLPT Level:</strong> {data.jlpt}</p>
-          <p><strong className="text-blue-700">Stroke Count:</strong> {data.stroke_count}</p>
-          </div>
-          </div>
-        )}
+        </div>
+      )}
     </div>
   );
 }
