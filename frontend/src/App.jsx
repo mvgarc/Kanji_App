@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useState } from 'react';
 import './index.css';
 
@@ -23,7 +22,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
-        Kanji Info App
+        Kanji Finder
       </h1>
 
       <div className="max-w-xl mx-auto flex flex-col items-center">
