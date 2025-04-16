@@ -1,4 +1,4 @@
-# Kanji App para N5
+# Kanji Finder
 
 Una aplicación web desarrollada con **Flask (Python)** para apoyar el aprendizaje y práctica de **kanjis japoneses**, consumiendo datos en tiempo real desde la API pública [kanjiapi.dev](https://kanjiapi.dev/). Ideal para estudiantes de japonés (como yo) que desean consultar kanjis por niveles JLPT, significados o lecturas de manera rápida y accesible desde cualquier dispositivo.
 
