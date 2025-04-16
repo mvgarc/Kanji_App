@@ -27,17 +27,24 @@ function App() {
           Search
         </button>
       </form>
-
+      
       {data && (
-        <div className="bg-white p-6 shadow rounded w-full max-w-md">
-          <h2 className="text-6xl mb-4 text-center">{data.kanji}</h2>
-          <p><strong>Meanings:</strong> {data.meanings.join(', ')}</p>
-          <p><strong>On'yomi:</strong> {data.on_readings.join(', ')}</p>
-          <p><strong>Kun'yomi:</strong> {data.kun_readings.join(', ')}</p>
-          <p><strong>JLPT Level:</strong> {data.jlpt}</p>
-          <p><strong>Stroke Count:</strong> {data.stroke_count}</p>
-        </div>
-      )}
+        <div className="bg-white p-6 shadow rounded w-full max-w-4xl flex gap-8">
+          {/* Columna izquierda: Kanji */}
+          <div className="flex items-center justify-center w-1/3 border-r-2 border-gray-200">
+          <span className="text-[8rem] font-extrabold text-gray-800">{data.kanji}</span>
+          </div>
+          
+          {/* Columna derecha: Información */}
+          <div className="w-2/3 flex flex-col justify-center gap-3">
+          <p><strong className="text-blue-700">Meanings:</strong> {data.meanings.join(', ')}</p>
+          <p><strong className="text-blue-700">On'yomi:</strong> {data.on_readings.join(', ')}</p>
+          <p><strong className="text-blue-700">Kun'yomi:</strong> {data.kun_readings.join(', ')}</p>
+          <p><strong className="text-blue-700">JLPT Level:</strong> {data.jlpt}</p>
+          <p><strong className="text-blue-700">Stroke Count:</strong> {data.stroke_count}</p>
+          </div>
+          </div>
+        )}
     </div>
   );
 }
