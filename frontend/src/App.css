@@ -1,42 +1,54 @@
-#root {
-  max-width: 1280px;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.search-box {
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input {
+  padding: 10px;
+  width: 200px;
+  font-size: 16px;
+  margin-right: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.card {
-  padding: 2em;
+.kanji-card {
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  justify-content: space-between;
+  max-width: 600px;
+  margin: 0 auto; 
 }
 
-.read-the-docs {
-  color: #888;
+.kanji-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 100px;
+  border-right: 1px solid #ccc;
+}
+
+.kanji-info {
+  flex: 2;
+  padding-left: 20px;
 }
