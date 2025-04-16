@@ -1,28 +1,29 @@
-# Kanji Finder
+# Kanji Finder 🈶
 
-Una aplicación web desarrollada con **Flask (Python)** para apoyar el aprendizaje y práctica de **kanjis japoneses**, consumiendo datos en tiempo real desde la API pública [kanjiapi.dev](https://kanjiapi.dev/). Ideal para estudiantes de japonés (como yo) que desean consultar kanjis por niveles JLPT, significados o lecturas de manera rápida y accesible desde cualquier dispositivo.
-
+**Kanji Finder** es una aplicación web que permite consultar información detallada sobre **un único kanji** del idioma japonés, desde niveles de dificultad **JLPT N5 a N1**. La aplicación está dividida en un frontend hecho con **React + Vite** y un backend ligero construido con **Flask**, que actúa como intermediario para consultar datos desde la API pública [kanjiapi.dev](https://kanjiapi.dev/).
 ## 🌐 Características
 
-- Visualización dinámica de kanjis usando una API externa.
-- Consulta por kanji individual y visualización de su significado, lecturas y nivel JLPT.
-- Interfaz sencilla, amigable y adaptable a dispositivos móviles.
-- Arquitectura web liviana y extensible con Flask.
+- Consulta por un solo kanji (no compuestos).
+- Información basada en niveles JLPT (N5 a N1).
+- Datos enriquecidos desde [kanjiapi.dev](https://kanjiapi.dev).
+- Interfaz limpia y rápida, hecha con React + Vite.
+- Backend simple con Flask para gestionar las peticiones.
+
+![alt text](image.png)
 
 ## 🛠️ Tecnologías utilizadas
 
-- [Python 3.x](https://www.python.org/)
-- [Flask](https://flask.palletsprojects.com/)
-- [kanjiapi.dev](https://kanjiapi.dev/) (API REST gratuita de kanjis)
-- HTML5 + CSS3
-- Jinja2 (para plantillas)
+- **Frontend:** React + Vite
+- **Backend:** Python + Flask
+- **API:** [https://kanjiapi.dev](https://kanjiapi.dev)
+- **Estilos:** CSS
 
 ## 🔌 API utilizada
 
 Este proyecto consume los datos desde:
 
 ```
-https://kanjiapi.dev/v1/kanji/<kanji>
+https://kanjiapi.dev/v1/kanji/all
 ```
 
 Por ejemplo, para consultar el kanji 日:
@@ -35,46 +36,40 @@ La respuesta incluye lecturas on'yomi, kun'yomi, significado, número de trazos,
 
 ## 🚀 Instalación
 
-1. Clona este repositorio:
+### 1. Clona el repositorio
 
 ```bash
-git clone https://github.com/mvgarc/Kanji_App.git
-cd Kanji_App
+git clone https://github.com/mvgarc/Kanji_Finder.git
+cd Kanji_Finder
 ```
 
-2. Crea y activa un entorno virtual (opcional pero recomendado):
+---
+
+### 2. Backend (Flask)
 
 ```bash
+cd backend
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
-```
-
-3. Instala las dependencias:
-
-```bash
 pip install -r requirements.txt
-```
-
-4. Ejecuta la aplicación:
-
-```bash
 flask run
 ```
 
-> Asegúrate de tener configurada la variable de entorno `FLASK_APP` (por ejemplo, `app.py`).
+Por defecto corre en: `http://localhost:5000`
 
-## 📁 Estructura del proyecto
+---
+
+### 3. Frontend (React + Vite)
 
 ```bash
-Kanji_App/
-├── app.py
-├── static/
-│   └── style.css
-├── templates/
-│   └── index.html
-├── requirements.txt
-└── README.md
+cd ../frontend
+npm install
+npm run dev
 ```
+
+Accede desde `http://localhost:5173`
+
+---
 
 ## 🔮 Mejoras futuras
 
@@ -90,3 +85,6 @@ Kanji_App/
 ## 📄 Licencia
 
 Este proyecto está bajo la licencia MIT. Revisa el archivo `LICENSE` para más detalles.
+
+
+Desarrollado con 💻 por [@mvgarc](https://github.com/mvgarc)
